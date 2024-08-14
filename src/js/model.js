@@ -46,7 +46,7 @@ export const loadSearchResults = async function (query) {
         title: rec.title,
         publisher: rec.publisher,
         image: rec.image_url,
-        ...(rec.key && { key: rec.key }),
+        // ...(rec.key && { key: rec.key }),
       };
     });
   } catch (err) {
