@@ -3,6 +3,8 @@ import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
+import copyrightView from "./views/copyrightView.js";
+import { getCurrentYear } from "./helpers.js";
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -58,10 +60,16 @@ const controlPagination = function (goToPage) {
   paginationView.render(model.state.search);
 };
 
+const setCopyrightMessage = function () {
+  const year = getCurrentYear();
+  copyrightView.updateYear(year);
+};
+
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  setCopyrightMessage();
 };
 
 init();

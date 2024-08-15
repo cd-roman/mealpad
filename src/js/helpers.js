@@ -20,3 +20,7 @@ export const getJSON = async function (url) {
     throw err;
   }
 };
+
+export function getCurrentYear() {
+  return new Date().getFullYear();
+}
