@@ -17,3 +17,6 @@ yarn-error.log*
 
 # Build output
 dist/
+
+# Environment variables
+.env
