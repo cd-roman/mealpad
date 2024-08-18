@@ -131,7 +131,7 @@ export const uploadRecipe = async function (newRecipe) {
         const ingArr = ing[1].split(",").map((el) => el.trim());
         if (ingArr.length !== 3)
           throw new Error(
-            "Wrong ingredient fromat! Please use the correct format :)"
+            "Wrong ingredient fromat! Please use the correct format: 'quantity,unit,description' with no spaces between commas."
           );
 
         const [quantity, unit, description] = ingArr;

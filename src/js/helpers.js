@@ -1,5 +1,7 @@
 import { async } from "regenerator-runtime";
 import { TIMEOUT_SEC } from "./config.js";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -11,6 +13,27 @@ const timeout = function (s) {
 
 export function getCurrentYear() {
   return new Date().getFullYear();
+}
+
+toastr.options = {
+  debug: false,
+  newestOnTop: false,
+  progressBar: false,
+  positionClass: "toast-top-center",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "4000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
+
+export function showToast() {
+  toastr.success("Recipe was successfully uploaded!");
 }
 
 export const AJAX = async function (url, uploadData = undefined) {
