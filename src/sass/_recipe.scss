@@ -10,7 +10,7 @@
     transform-origin: top;
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       height: 100%;
       width: 100%;
@@ -67,7 +67,13 @@
   &__details {
     display: flex;
     align-items: center;
-    padding: 7.5rem 8rem 3.5rem 8rem;
+    padding: 7.5rem 5.5rem 3.5rem 5.5rem;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: $bp-extra-small) {
+      flex-direction: column;
+      margin-top: 24px;
+    }
   }
 
   &__info {
@@ -78,6 +84,10 @@
 
     &:not(:last-child) {
       margin-right: 4.5rem;
+    }
+
+    @media only screen and (max-width: $bp-extra-small) {
+      margin-bottom: 2rem;
     }
   }
 
@@ -111,11 +121,17 @@
 
     margin-left: auto;
     margin-right: 1.75rem;
+    margin-top: 12px;
 
     svg {
       height: 2.25rem;
       width: 2.25rem;
       fill: $color-primary;
+    }
+
+    @media screen and (max-width: $bp-extra-small) {
+      margin-right: auto;
+      order: 3;
     }
   }
 
@@ -136,6 +152,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem 3rem;
     list-style: none;
+
+    @media only screen and (max-width: $bp-extra-small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__ingredient {
@@ -175,5 +195,9 @@
 
   &__publisher {
     font-weight: 700;
+  }
+
+  @media screen and (max-width: $bp-medium-small) {
+    min-height: 70vh;
   }
 }
