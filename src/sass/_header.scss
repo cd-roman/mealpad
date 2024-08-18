@@ -192,6 +192,7 @@
   width: 40rem;
   background-color: #fff;
   box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
+  pointer-events: none;
 
   visibility: hidden;
   opacity: 0;
@@ -219,5 +220,6 @@
   .nav__btn--bookmarks:hover + & {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
   }
 }

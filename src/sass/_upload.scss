@@ -1,13 +1,19 @@
 .add-recipe-window {
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100rem;
+  max-width: 110rem;
+  width: 90%;
   background-color: white;
   border-radius: 9px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   padding: 5rem 6rem;
+  margin-bottom: 40px;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
   z-index: 1000;
   transition: all 0.5s;
@@ -23,6 +29,14 @@
     border: none;
     background: none;
   }
+
+  .spacer {
+    height: 2rem;
+
+    @media screen and (min-width: $bp-medium-small) {
+      display: none;
+    }
+  }
 }
 
 .overlay {
@@ -30,7 +44,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 200%;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   z-index: 100;
@@ -46,6 +60,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem 6rem;
+  margin: 0 auto;
+  padding-bottom: 2rem;
 
   &__column {
     display: grid;
@@ -95,5 +111,9 @@
   &__btn {
     grid-column: 1 / -1;
     justify-self: center;
+  }
+
+  @media screen and (max-width: $bp-medium-small) {
+    grid-template-columns: 1fr;
   }
 }
