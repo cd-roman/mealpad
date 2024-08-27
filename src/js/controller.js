@@ -41,16 +41,16 @@ const controlRecipes = async function () {
   }
 };
 
-const controlSearchResults = async function () {
+const controlSearchResults = async function (query = null) {
   try {
     resultsView.renderSpinner();
 
     // 1) Get search query
-    const query = searchView.getQuery();
-    if (!query) return;
+    const searchQuery = query || searchView.getQuery();
+    if (!searchQuery) return;
 
     // 2) Load search results
-    await model.loadSearchResults(query);
+    await model.loadSearchResults(searchQuery);
 
     // 3) Render results
     resultsView.render(model.getSearchResultsPage());
@@ -134,6 +134,7 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
   setCopyrightMessage();
+  controlSearchResults("pizza");
 };
 
 init();
