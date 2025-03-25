@@ -125,7 +125,28 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+/**
+ * Checks if the current URL is valid and redirects to homepage if it's not
+ * Valid URLs should either be the base URL or have a hash directly after the path
+ */
+const validateAndRedirectURL = function() {
+  const pathname = window.location.pathname;
+  const hash = window.location.hash;
+  
+  // Get the base pathname (everything up to the last slash)
+  const basePathname = pathname.split('/').slice(0, -1).join('/') + '/';
+  
+  // If we're at the root path (/ or /index.html) with or without a hash, it's valid
+  if ((pathname === '/' || pathname === '/index.html' || pathname === basePathname) && (hash === '' || hash.startsWith('#'))) {
+    return;
+  }
+  
+  // Any other URL pattern should redirect to the homepage
+  window.location.href = window.location.origin + basePathname;
+};
+
 const init = function () {
+  validateAndRedirectURL();
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
